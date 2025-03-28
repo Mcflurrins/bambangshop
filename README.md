@@ -89,7 +89,14 @@ DashMap is better than Vec for this case. With Vec, finding or removing a subscr
 
 DashMap is the simpler choice. A Singleton with Arc and Mutex would work, but it adds extra complexity with manual locking. DashMap handles thread safety automatically, so we avoid mistakes and keep the code clean. Since Rust prioritizes safe concurrency, DashMap is the more practical option.
 
-
 #### Reflection Publisher-2
+#### In the Model-View Controller (MVC) compound pattern, there is no “Service” and “Repository”. Model in MVC covers both data storage and business logic. Explain based on your understanding of design principles, why we need to separate “Service” and “Repository” from a Model?
+In MVC, the Model handles both data and business logic, which can become messy as the application grows. Separating Service (business logic) and Repository (data access) follows the Single Responsibility Principle because each component does one thing well. This makes the code cleaner, easier to test, and more flexible when changing databases or business rules later.
+
+#### What happens if we only use the Model? Explain your imagination on how the interactions between each model (Program, Subscriber, Notification) affect the code complexity for each model?
+If Program, Subscriber and Notification models all handled their own data and logic directly, they would become bloated and tangled. Changing a database query might break business rules, and testing would be harder. The models would end up duplicating code and depending too much on each other, making the system rigid and hard to maintain. 
+
+#### Have you explored more about Postman? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects.
+Postman lets me test API endpoints without writing frontend code first. Features like saved requests, environment variables, and automated testing help verify our backend works correctly. For group projects, the collaboration features let teammates share API collections. The mock server feature would be useful for testing frontends before the real backend is ready.
 
 #### Reflection Publisher-3
