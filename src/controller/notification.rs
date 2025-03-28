@@ -14,3 +14,10 @@ use rocket::response::status::Created;
      };
  }
 
+ #[post("/unsubscribe/<product_type>?<url>")]
+ pub fn unsubscribe(product_type: &str, url: &str) -> Result<Json<Subscriber>> {
+     return match NotificationService::unsubscribe(product_type, url) {
+         Ok(f) => Ok(Json::from(f)),
+         Err(e) => Err(e)
+     };
+ }
