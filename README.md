@@ -77,6 +77,18 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
+#### In the Observer pattern diagram explained by the Head First Design Pattern book, Subscriber is defined as an interface. Explain based on your understanding of Observer design patterns, do we still need an interface (or trait in Rust) in this BambangShop case, or a single Model struct is enough?
+
+Using a trait is better than just a struct because it lets different subscribers define their own update behavior. A single struct would be too rigid. If new subscriber types are added later, the code would need changes. The Observer pattern works best when subscribers follow a common trait, keeping the system flexible and easy to extend.
+
+#### id in Program and url in Subscriber is intended to be unique. Explain based on your understanding, is using Vec (list) sufficient or using DashMap (map/dictionary) like we currently use is necessary for this case?
+
+DashMap is better than Vec for this case. With Vec, finding or removing a subscriber means checking every item, which gets slow as the list grows. DashMap uses unique keys for fast lookups, making it much more efficient when dealing with many subscribers. DashMap’s hash-based approach ensures O(1) average-time complexity for operations, making it a better choice.
+
+#### When programming using Rust, we are enforced by rigorous compiler constraints to make a thread-safe program. In the case of the List of Subscribers (SUBSCRIBERS) static variable, we used the DashMap external library for thread safe HashMap. Explain based on your understanding of design patterns, do we still need DashMap or we can implement Singleton pattern instead?
+
+DashMap is the simpler choice. A Singleton with Arc and Mutex would work, but it adds extra complexity with manual locking. DashMap handles thread safety automatically, so we avoid mistakes and keep the code clean. Since Rust prioritizes safe concurrency, DashMap is the more practical option.
+
 
 #### Reflection Publisher-2
 
