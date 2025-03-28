@@ -100,3 +100,12 @@ If Program, Subscriber and Notification models all handled their own data and lo
 Postman lets me test API endpoints without writing frontend code first. Features like saved requests, environment variables, and automated testing help verify our backend works correctly. For group projects, the collaboration features let teammates share API collections. The mock server feature would be useful for testing frontends before the real backend is ready.
 
 #### Reflection Publisher-3
+
+#### Observer Pattern has two variations: Push model (publisher pushes data to subscribers) and Pull model (subscribers pull data from publisher). In this tutorial case, which variation of Observer Pattern that we use?
+The tutorial uses the push model of the Observer pattern where the publisher automatically sends updates to subscribers. This works well because subscribers immediately get the latest data without having to ask for it, making the system more responsive and simpler to implement. The push model fits this case since all subscribers need the same program details.
+
+#### What are the advantages and disadvantages of using the other variation of Observer Pattern for this tutorial case? (example: if you answer Q1 with Push, then imagine if we used Pull)
+If we used the pull model instead, subscribers would have to request updates themselves. This could save bandwidth if subscribers don't always need updates, but would add complexity since each subscriber needs logic to check for changes. The system would feel less real-time as there would be delays between updates becoming available and subscribers fetching them.
+
+#### Explain what will happen to the program if we decide to not use multi-threading in the notification process.
+Without multi-threading, sending notifications would happen one at a time, blocking other operations. Users would experience delays, especially when many notifications need sending. Multi-threading keeps the system responsive by handling notifications in the background while the main program continues running normally.
